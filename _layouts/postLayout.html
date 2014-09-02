@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html manifest="diego.appcache">
+  <head>
+    <meta charset="utf-8" />
+    <meta content='text/html; charset=utf-8' http-equiv='Content-Type'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0'>
+
+    <title>{% if page.title %}{{ page.title }} – {% endif %}{{ site.name }} – {{ site.description }}</title>
+
+    <meta name="author" content="{{ site.name }}" />
+    <meta name="description" content="{{ site.description }}">
+    <meta name="keywords" content="{{ page.tags }}">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
+    <link rel="stylesheet" href="{{ site.baseurl }}/fonts/font-awesome/css/font-awesome.min.css">
+    <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+
+    <link rel="shortcut icon" href="{{ site.baseurl }}/favicon.ico">
+
+  </head>
+
+  <body>
+
+      <article>
+        <div class="parallax">
+          <div class="bg__top" style="background-image:url({{ page.image }})"></div>
+        </div>
+       
+        <header>
+
+          <!--{% if {{page.title | size}} > 75 %}
+            <h1>{{page.title | truncate: 75}}</h1>
+          {% endif %}-->
+          
+          {% capture difference %}{{ page.title | size | minus:40 }}{% endcapture %}
+
+            {% unless difference contains '-' %}
+              <h1>{{ page.title | truncate: 75 }}</h1>
+              <h2><a href="https://twitter.com/diegojmaldonado">@diegojmaldonado</a></h2>
+              <p>&nbsp;</p>
+            {% else %}
+              <h1>{{ page.title }}</h1>
+              <h2><a href="https://twitter.com/diegojmaldonado">@diegojmaldonado</a></h2>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+                <p>&nbsp;</p>
+            {% endunless %}
+
+        </header>
+
+        <nav>
+          <a href="{{ site.baseurl }}/about" class="site-avatar"><img src="{{ site.avatar }}" /></a>
+          <h3><a href="{{ site.baseurl }}/">Blog</a></h3>
+          <h3><a href="{{ site.baseurl }}/category">Categorias</a></h3>
+        </nav>
+
+        <section>
+          <div class="container">
+
+            <!--{% if page.previous %} 
+                <a rel="prev" href="{{ page.previous.url }}">&larr; Older</a>
+            {% endif %}
+
+            {% if page.next %} 
+                <a rel="next" href="{{ page.next.url }}"><img src="{{ page.next.image }}" /></a>
+            {% endif %}
+          -->
+
+            {{ content }}
+          </div>
+        </section>
+
+      </article>
+
+    <!-- Footer -->
+    <div class="wrapper-footer">
+      <footer class="footer">
+        <div class="parallax">
+          <!--<div class="bg__foo"></div>-->
+          {% if page.next %}
+              {% capture difference %}{{ page.next.title | size | minus:40 }}{% endcapture %}
+                {% unless difference contains '-' %}
+                  <div class="bg__foo" style="background-image:url({{ page.next.image }})">
+                    <h2><a rel="next" href="{{ page.next.url }}">{{page.next.title | truncate: 75 }}</a></h2>
+                  </div>
+                {% else %}
+                  <p>&nbsp;</p>
+                  <div class="bg__foo" style="background-image:url({{ page.next.image }})">
+                    <h2><a rel="next" href="{{ page.next.url }}">{{page.next.title}}</a></h2>
+                  </div>
+                {% endunless %}
+          {% endif %}
+
+          {% if page.next == nill %}
+              {% capture difference %}{{ page.previous.title | size | minus:40 }}{% endcapture %}
+                {% unless difference contains '-' %}
+                  <div class="bg__foo" style="background-image:url({{ page.previous.image }})">
+                    <h2><a rel="prev" href="{{ page.previous.url }}">{{page.previous.title | truncate: 75 }}</a></h2>
+                  </div>
+                {% else %}
+                  <p>&nbsp;</p>
+                  <div class="bg__foo" style="background-image:url({{ page.previous.image }})">
+                    <h2><a rel="prev" href="{{ page.previous.url }}">{{page.previous.title}}</a></h2>
+                  </div>
+                {% endunless %}
+          {% endif %}
+
+        </div>
+          <button type="button" class="btn btn-git"><i class="icon-github icon-3x"></i></button>
+          <button type="button" class="btn btn-twitter"><i class="icon-twitter icon-3x"></i></button>
+      </footer>
+    </div>
+    <!-- /Footer -->
+
+    {% include analytics.html %}
+  </body>
+</html>

@@ -13,13 +13,16 @@
 /* BASE RULES */
 /**************/
 
+
 html {
   font-size: 100%;
 }
 
 body {
 	background: $white;
-  font: 18px/1.4 $helvetica;
+  font-family: $helveticaNeue;
+  font-weight: 200;
+  line-height: 1.6;
   color: $darkGray;
 }
 
@@ -30,13 +33,18 @@ body {
   width: 100%;
 }
 
+a {
+  color: $darkGray;
+  text-decoration: none;
+  cursor: pointer;
+  &:hover, &:active {
+    color: $red;
+  }
+}
+
 h1, h2, h3, h4, h5, h6 {
-  font-family: $helveticaNeue;
-  color: $darkerGray;
-  font-weight: bold;
-  
-  line-height: 1.7;
-  margin: 1em 0 15px;
+  font-family: $bebas;
+  color: $darkGray;
   padding: 0;
 
   @include mobile {
@@ -45,36 +53,67 @@ h1, h2, h3, h4, h5, h6 {
 }
   
 h1 {  
-  font-size: 30px;
+  color: $white;
+  font-size: 5em;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  -webkit-text-stroke: 1px lighterGray;
   a {
     color: inherit;
+  }
+  @include mobile {
+    font-size: 3.5em;
   }
 }
 
 h2 {  
-  font-size: 24px;
+  font-size: 2em;
+  letter-spacing: 0.02em;
+
+  @include mobile {
+    font-size: 0em;
+  }
+
+  a {
+    color: $white;
+    text-decoration: none;
+    -webkit-text-stroke: 1px lighterGray;
+    cursor: pointer;
+    &:hover, &:active {
+      color: $red;
+    }
+  }
 }
 
 h3 {  
-  font-size: 20px;
+  font-size: 1.8em;
 }
 
 h4 {  
-  font-size: 18px;
+  font-size: 1.6em;
   color: $gray;
+}
+
+h5{
+  background-color: $red;
+  color: $white;
+  padding-left: 0.5em;
+}
+
+h6{
+  color: $red;
+  font-size: 0.8;
+}
+
+hr {
+  color: $red;
+  height: 1px;
+  width: 80%;
+  border: none;
 }
 
 p {
   margin: 15px 0;
-}
-
-a {
-  color: $blue;
-  text-decoration: none;
-	cursor: pointer;
-  &:hover, &:active {
-    color: $blue;
-  }
 }
 
 ul, ol {
@@ -111,8 +150,10 @@ img {
 }
 
 .date {
+  margin-top: 2em;
+  margin-bottom: 5em;
   font-style: italic;
-  color: $gray;
+  color: $red;
 }
 
 // Specify the color of the selection
@@ -137,6 +178,7 @@ img {
     clear: both;
 }
 
+
 /*********************/
 /* LAYOUT / SECTIONS */
 /*********************/
@@ -146,12 +188,14 @@ img {
 //
 
 .wrapper-masthead {
-  margin-bottom: 50px;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 0 10px;
+  width: 100%;
 }
 
 .masthead {
   padding: 20px 0;
-  border-bottom: 1px solid $lightGray;
   
   @include mobile {
     text-align: center;
@@ -159,24 +203,55 @@ img {
 }
 
 .site-avatar {
+  //float: none;
+  //display: block;
+  // margin: 0 auto;
   float: left;
-  width: 70px;
-  height: 70px;
-  margin-right: 15px;
-
-  @include mobile {
-    float: none;
-    display: block;
-    margin: 0 auto;
-  }
+  margin-left: 20px;
+  width: 50px;
+  height: 50px;
 
   img {
-    border-radius: 5px;
+    margin-top: 5px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+  }
+
+    @include mobile {
+      margin-left: 20px;
+      float: left;
+      display: block;
+      //margin: 0 auto;
   }
 }
 
+.site-bigavatar {
+  float: none;
+  display: block;
+  margin: 0 auto;
+  width: 200px;
+  height: 200px;
+
+  img {
+    margin-top: 5px;
+    border-radius: 100px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+  }
+
+/*    @include mobile {
+      margin-left: 20px;
+      float: left;
+      display: block;
+      //margin: 0 auto;
+  }*/
+}
+
 .site-info {
-  float: left;
+  float: none;
+  display: block;
+  margin: 0 auto;
 
   @include mobile {
     float: none;
@@ -186,18 +261,25 @@ img {
 }
 
 .site-name {
-  margin: 0;
+  text-align: center;
+  float: none;
+  display: block;
+  margin-top: 25px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 15px;
   color: $darkGray;
   cursor: pointer;
-  font-family: $helveticaNeue; 
+  font-family: $bebas; 
   font-weight: 300;
-  font-size: 28px;
-  letter-spacing: 1px;
+  font-size: 2.5em;
+  letter-spacing: 0.02px;
 }
 
 .site-description {
   margin: -5px 0 0 0;
   color: $gray;
+  font-family: $helveticaNeue;
   font-size: 16px;
   
   @include mobile {
@@ -206,30 +288,34 @@ img {
 }
 
 nav {
-  float: right;
-  margin-top: 23px; // @TODO: Vertically middle align
-  font-family: $helveticaNeue; 
-  font-size: 18px;
-  
-  @include mobile {
-    float: none;
-    margin-top: 9px;
-    display: block;
-    font-size: 16px;
+  width:100%;
+  height:60px;
+  position:fixed;
+  top:0px;
+  background-color: $white;
+  border-bottom: 1px solid $lightGray;
+  opacity: 0.95;
+
+  h3{
+    margin-top: 6px;
+    float: left;
   }
 
   a {
     margin-left: 20px;
-    color: $darkGray;
+    color: $gray;
     text-align: right;
     font-weight: 300;
     letter-spacing: 1px;
-
-    @include mobile {
-      margin: 0 10px;
-      color: $blue;
-    }
   }
+
+  @include mobile {
+    //position:fixed;
+    //top:0px;
+    //background-color: $red;
+    //display: block;
+    //font-size: 16px;
+    }
 }
 
 //
@@ -237,24 +323,74 @@ nav {
 //
 
 .posts > .post {
-  padding-bottom: 2em;
-  border-bottom: 1px solid $lightGray;
+  border-top: 1px solid $lightGray;
+  padding-top: 3em;
+  padding-bottom: 3em;
+  //padding-bottom: 6.5em;
+  //border-bottom: 1px solid $lightGray;
+
+  h3{
+    font-size: 3em;
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
 }
 
 .posts > .post:last-child {
-  padding-bottom: 1em;
+  padding-bottom: 10em;
   border-bottom: none;
 }
 
 .post { 
-  blockquote {
-    margin: 1.8em .8em;
-    border-left: 2px solid $gray;
-    padding: 0.1em 1em;
-    color: $gray;
-    font-size: 22px;
-    font-style: italic;
+  h1{
+    font-size: 0px;
   }
+
+  h2{
+    color: $red;
+    font-size: 5em;
+  }
+
+  h3{
+    color: $red;
+    font-size: 3.5em;
+  }
+
+  h4{
+    color: $red;
+    font-size: 2em;
+  }
+
+  h5{
+    background-color: $red;
+    color: $white;
+    font-size: 1.8em;
+    padding-left: 0.4em;
+  }
+
+  p {
+    margin-top: 25px;
+  }
+
+  blockquote {
+    margin: 1.2em .4em;
+    //border-left: 2px solid $gray;
+    //padding: 0.1em 1em;
+    //color: $gray;
+    //font-size: 22px;
+    //font-style: italic;
+    font-family: Georgia, serif;
+    font-style: italic;
+    color: $red;
+    font-size: 5em;
+    line-height: 1;
+    text-align: center;
+
+    @include mobile {
+      font-size: 3em;
+    }      
+  }
+
 
   .comments {
     margin-top: 10px;
@@ -264,19 +400,215 @@ nav {
     text-transform: uppercase;
     font-size: 15px;
   }
+
 }
 
+/*********************/
+/* LAYOUT / PARALLAX */
+/*********************/
+
+//
+// .parallax
+//
+
+.parallax {
+  [class*="bg__"] {
+    position : relative;
+    height : 70vh;
+    text-indent : -9999px;
+
+    background-attachment : fixed;
+    background-position   : top center;
+    background-size       : cover;
+    
+    border: none;
+  }
+  
+  .bg__top {
+    height : 100vh;
+    background-color: $white;
+  }
+
+  .bg__foo {
+    height : 70vh;
+    background-color: $black;
+    //background-image: url(http://homefoliomedia.com/wp-content/uploads/2014/05/mac-glasses.jpg);
+    
+      h2{
+        color: $white;
+        cursor: pointer;
+        position : relative;
+        padding-top: 1.5em;
+        font-size: 5em;
+        text-indent : 0px;
+        margin: 0;
+        letter-spacing: 0.02em;
+      }
+
+      &:hover {
+        color: $red;
+      }
+
+      &:active{
+        color: $white;
+      }
+
+      @include mobile {
+        font-size: 0.5em;
+      }
+  }
+}
+
+article {
+
+    .container {
+      //width : 600px;
+      margin : 0 auto;
+      text-align: justify;
+      //padding: 5em;
+    }
+
+    header {
+      //height : 100vh;
+      position : relative;
+      margin : -25% 0 0 0;
+      padding : 4em;
+      //text-align : left;
+      //font-size : 2em;
+      
+      //background-color : rgba( #fff, 0.75 );
+
+      @include mobile {
+        //height : 100vh;
+        position : relative;
+        margin : -90% 0 0 0;
+        padding : 1em;
+      }
+
+        a {
+          color: $red;
+          text-decoration: none;
+          cursor: pointer;
+          &:hover, &:active {
+            color: $white;
+          }
+        }
+    }
+
+    section {
+      padding : 1em;
+      //text-align: justify;
+      
+      &.parallax {
+        margin  : 0;
+        padding : 0;
+      }
+    }
+}
+
+
+/**************/
+/* BUTTONS */
+/**************/
+/*
+<div class="rounded-button">
+  <button><span>Publicaciones Viejas</span></button>
+</div>
+*/ 
+/*
+//
+// .button
+//
+.rounded-button button{
+  display: block;
+  float: left;
+  margin: 0 auto;
+  padding: 0;
+  width: 200px;
+  height: 50px;
+  border: 1px solid #e82939;
+  border-radius: 40px;
+  background: transparent;
+  color: #e82939;
+  letter-spacing: 1px;
+  font-size: 12px;
+  font-family: $helveticaNeue;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, color 0.3s, width 0.3s, border-width 0.3s, border-color 0.3s;
+
+
+  &:hover {
+    background-color: #e82939;
+    color: #fff;
+    }
+
+  &:focus {
+    outline: none;
+  }
+}  
+*/
+
+/**************/
+/*   FOOTER   */
+/**************/
+
 .wrapper-footer {
-  margin-top: 50px;
-  border-top: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  background-color: $lightGray;
+  //margin-top: 50px;
+  background-color: $black;
 }
 
 footer {
-  padding: 20px 0;
   text-align: center;
 }
+
+button{
+  border: none;
+  height: 100px;
+}
+    // Footer Git Button
+
+    .btn-git {
+      color: #ffffff;
+      background-color: #000000;
+    }
+
+    .btn-git:hover,
+    .btn-git:focus,
+    .btn-git:active,
+    .btn-git:active,
+    .open .dropdown-toggle .btn-git {
+      color: #585858;
+      background-color: #000000;
+    }
+
+    .btn-git:active,
+    .btn-git:active,
+    .open .dropdown-toggle .btn-git {
+      background-image: none;
+    }
+
+    // Footer Twitter Button
+
+    .btn-twitter {
+      color: #ffffff;
+      background-color: #000000;
+    }
+
+    .btn-twitter:hover,
+    .btn-twitter:focus,
+    .btn-twitter:active,
+    .btn-twitter:active,
+    .open .dropdown-toggle .btn-twitter {
+      color: #02adea;
+      background-color: #000000;
+    }
+
+    .btn-twitter:active,
+    .btn-twitter:active,
+    .open .dropdown-toggle .btn-twitter {
+      background-image: none;
+    }
 
 // Settled on moving the import of syntax highlighting to the bottom of the CSS
 // ... Otherwise it really bloats up the top of the CSS file and makes it difficult to find the start

@@ -12,12 +12,27 @@ $darkerGray: #222;
 $darkGray: #333;
 $gray: #666;
 $lightGray: #eee;
+$lighterGray: #F5F5F5;
 $white: #fff;
+$red: #e82939;
 
 // Font stacks
 $helvetica: Helvetica, Arial, sans-serif;
 $helveticaNeue: "Helvetica Neue", Helvetica, Arial, sans-serif;
 $georgia: Georgia, serif;
+$bebas: 'bebas_neueregular', Helvetica, Arial;
+
+// Custom Font
+@font-face {
+  font-family: 'bebas_neueregular';
+  src:  url('../fonts/BebasNeue-webfont.eot');
+  src:  url('../fonts/BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+        url('../fonts/BebasNeue-webfont.woff') format('woff'),
+        url('../fonts/BebasNeue-webfont.ttf') format('truetype'),
+        url('../fonts/BebasNeue-webfont.svg#bebas_neueregular') format('svg');
+  font-weight: 500;
+  line-height: 1.1;
+}
 
 // Mobile breakpoints
 @mixin mobile {
