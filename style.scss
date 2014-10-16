@@ -143,6 +143,7 @@ em, i {
 
 strong, b {
   font-weight: bold;
+  font-size: 0.9em;
 }
 
 img {
@@ -203,9 +204,6 @@ img {
 }
 
 .site-avatar {
-  //float: none;
-  //display: block;
-  // margin: 0 auto;
   float: left;
   margin-left: 20px;
   width: 50px;
@@ -368,17 +366,23 @@ nav {
     padding-left: 0.4em;
   }
 
-  p {
+  p{
     margin-top: 25px;
+
+    a{
+      padding: 0.2em;
+      color: $red;
+      font-size: 0.9em;
+      font-weight: bold;
+      &:hover, &:active{
+        color: $white;
+        background-color: $red;
+      }
+    }
   }
 
   blockquote {
     margin: 1.2em .4em;
-    //border-left: 2px solid $gray;
-    //padding: 0.1em 1em;
-    //color: $gray;
-    //font-size: 22px;
-    //font-style: italic;
     font-family: Georgia, serif;
     font-style: italic;
     color: $red;
@@ -432,7 +436,6 @@ nav {
   .bg__foo {
     height : 70vh;
     background-color: $black;
-    //background-image: url(http://homefoliomedia.com/wp-content/uploads/2014/05/mac-glasses.jpg);
     
       h2{
         color: $white;
@@ -462,21 +465,14 @@ nav {
 article {
 
     .container {
-      //width : 600px;
       margin : 0 auto;
       text-align: justify;
-      //padding: 5em;
     }
 
     header {
-      //height : 100vh;
       position : relative;
       margin : -25% 0 0 0;
       padding : 4em;
-      //text-align : left;
-      //font-size : 2em;
-      
-      //background-color : rgba( #fff, 0.75 );
 
       @include mobile {
         //height : 100vh;
@@ -491,7 +487,7 @@ article {
           cursor: pointer;
           &:hover, &:active {
             color: $white;
-          }
+            }
         }
     }
 

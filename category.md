@@ -9,4 +9,6 @@ tags : [Diego; Maldonado; IOS; Developer; CV; Curriculum; info; perfil; Argentin
 
 Eventualmente en esta sección agregaré los filtros por categorías (IOS Dev, Business, UX/Design & Series)
 
-<br><br><br>
+<br>
+<br>
+<br>
